@@ -5,7 +5,7 @@ import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import Header from "@/components/ui/header";
-import { EmergencyLogout } from "@/components/ui/emergency-logout";
+
 
 const inter=Inter({ subsets: ["latin"]});
 
