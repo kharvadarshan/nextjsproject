@@ -22,7 +22,7 @@ export default defineSchema({
 
     authorId:v.id("users"), 
 
-    tags: v.array(v.string()),
+    tags:v.array(v.string()),
     category:v.optional(v.string()),
     featuredImage: v.optional(v.string()),
 
