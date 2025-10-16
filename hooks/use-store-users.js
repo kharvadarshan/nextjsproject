@@ -13,12 +13,7 @@ export default function useStoreUser() {
   const storeUser = useMutation(api.user.store);
 
   useEffect(() => {
-    console.log("🔄 useStoreUser effect:", {
-      isAuthenticated,
-      isSignedIn,
-      clerkUser: clerkUser?.id,
-      userId
-    });
+   
 
     // If not authenticated with Convex OR not signed in with Clerk, reset
     if (!isAuthenticated || !isSignedIn || !clerkUser) {
@@ -29,11 +24,11 @@ export default function useStoreUser() {
     // Only store user if we haven't already stored them
     if (userId === null) {
       async function createUser() {
-        console.log("📝 Storing user in Convex...");
+       
         setIsStoring(true);
         try {
           const id = await storeUser();
-          console.log("✅ User stored with ID:", id);
+         
           setUserId(id);
         } catch (error) {
           console.error("❌ Failed to store user:", error);
