@@ -63,7 +63,9 @@ const PostEditor = ({initialData=null, mode="create"})=>{
     }, 30000); 
 
       return () => clearInterval(autoSave);
-    }, [watchedValues.title, watchedValues.content,handleSave,mode]);
+    }, [watchedValues.title, watchedValues.content]);
+
+    
 
     const onSubmit = async(data,action,silent=false)=>{
        try{
