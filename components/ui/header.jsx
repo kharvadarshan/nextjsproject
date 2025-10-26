@@ -1,15 +1,16 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import { SignInButton, SignUpButton, UserButton, useAuth } from "@clerk/nextjs";
 import { Authenticated, Unauthenticated, useConvexAuth } from "convex/react";
 import useStoreUser from "@/hooks/use-store-users";
 import { BarLoader } from "react-spinners";
 import Image from "next/image";
 import Link  from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname,useRouter } from "next/navigation";
 import { Button } from "./button";
 import { LayoutDashboard } from "lucide-react";
+
 
 const Header = () => {
   // const { isSignedIn, user: clerkUser } = useAuth();
@@ -17,11 +18,19 @@ const Header = () => {
   const { isLoading, isAuthenticated } = useStoreUser();
 
    const path = usePathname();
-  
-    if(path.includes("/dashboard"))
+   const router = useRouter();
+    
+
+    if(path !== "/" && path !== "/feed" && path.split("/").length >= 2 )
     {
-      return null; 
+      return null;
     }
+
+    useEffect(()=>{
+      if(!isLoading && isAuthenticated && path === "/"){
+        router.push("/feed");
+      }
+    },[isLoading,isAuthenticated,path,router]);
 
 
   return (
