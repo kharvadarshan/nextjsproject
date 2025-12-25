@@ -21,16 +21,18 @@ const Header = () => {
    const router = useRouter();
     
 
-    if(path !== "/" && path !== "/feed" && path.split("/").length >= 2 )
-    {
-      return null;
-    }
+   
 
     useEffect(()=>{
       if(!isLoading && isAuthenticated && path === "/"){
         router.push("/feed");
       }
     },[isLoading,isAuthenticated,path,router]);
+
+     if(path !== "/" && path !== "/feed" && path.split("/").length >= 2 )
+    {
+      return null;
+    }
 
 
   return (
