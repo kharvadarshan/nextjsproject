@@ -22,13 +22,20 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 
-
-
 export default function DashboardFollowersPage() {
-  const { user: currentUser, isSignedIn } = useUser();
+  const { user: currentUser, isSignedIn, isLoaded } = useUser();
   const router = useRouter();
   const [loadingStates, setLoadingStates] = useState({});
+  
 
+  if (!isLoaded) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <Loader2 className="h-12 w-12 animate-spin text-purple-500 mb-4" />
+        <p className="text-slate-400">Loading...</p>
+      </div>
+    );
+  }
   // Get current user's followers
   const { 
     data: followers, 
@@ -39,6 +46,11 @@ export default function DashboardFollowersPage() {
     isSignedIn ? {} : "skip"
   );
 
+   useEffect(() => {
+    if (!isSignedIn) {
+      router.push("/sign-in");
+    }
+  }, [isSignedIn, router]);
   // Follow/unfollow mutation
   const toggleFollow = useConvexMutation(api.follow.toggleFollow);
 
