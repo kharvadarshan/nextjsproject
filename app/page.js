@@ -294,7 +294,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto text-center">
                <p className="text-muted-foreground">
                   Made with ❤️ by{" "}
-                  <span className="text-foreground font-semibold">RoadsideCoder</span>
+                  <span className="text-foreground font-semibold">DaringCoder</span>
                </p>
             </div>
        </footer>
