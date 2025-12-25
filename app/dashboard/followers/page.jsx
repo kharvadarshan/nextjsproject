@@ -14,8 +14,6 @@ import {
   Users, 
   Calendar, 
   FileText, 
-  Eye, 
-  Heart, 
   Loader2,
   ArrowLeft,
   UserPlus,
@@ -297,7 +295,7 @@ export default function DashboardFollowersPage() {
                       <p className="text-2xl font-bold text-purple-400">
                         {followers.filter(f => {
                           const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
-                          return  new Date(f.followedAt).getTime() > weekAgo;
+                          return new Date(f.followedAt).getTime() > weekAgo;
                         }).length}
                       </p>
                     </div>
