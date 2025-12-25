@@ -1,6 +1,4 @@
 
-
-
 "use client";
 
 import { useConvexQuery, useConvexMutation } from "@/hooks/use-convex-query";
@@ -23,6 +21,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useState } from "react";
+
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function DashboardFollowersPage() {
   const { user: currentUser, isSignedIn } = useUser();
